@@ -1,5 +1,5 @@
 <?php include __DIR__ . '/partials/header.php' ?>
-    <form>
+    <form method="POST" action="/form?cr=red&lower=rose">
         <input type="text" placeholder="Name" name="name">
         <input type="number" placeholder="Age" name="age">
         <input type="submit">

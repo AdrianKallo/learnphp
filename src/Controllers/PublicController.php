@@ -1,38 +1,31 @@
 <?php
-
 namespace App\Controllers;
 
 use App\DB;
+use App\Models\Post;
+use App\Models\User;
 
-use PDO;
-use PDOException;
-
-class PublicController
-{
+class PublicController {
     public function index(){
-        $db = new DB();
-        $posts = $db-> all('users');
-        var_dump($posts);
-
-        $name = 'Adrian';
-        include 'views/index.php';
+        $posts = Post::all();
+        view('index', compact('posts'));
+        //view('index', ['name'=>$name]);
     }
 
-    public function about()
-    {
-        include 'views/about.php';
+    public function about(){
+        view('about');
     }
 
-    public function form()
-    {
+    public function form(){
+        view('form');
+    }
+
+    public function answer(){
         var_dump($_GET);
         var_dump($_POST);
-        //var_dump($_SERVER);
-        include 'views/form.php';
+        //var_dump($_REQUEST); NOT USED!!!
     }
-    public function formPost()
-    {
-        var_dump($_GET);
-        var_dump($_POST);
+    public function getAnswer(){
+        echo "get request";
     }
 }

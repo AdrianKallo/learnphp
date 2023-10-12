@@ -1,8 +1,22 @@
-<?php include __DIR__ . '/partials/header.php' ?>
-    <h1>Hello world <?=$name?></h1>
-    <ul>
-        <?php for($i=0; $i<10; $i++): ?>
-            <li><?=$i?></li>
-        <?php endfor; ?>    
-    </ul>
-<?php include __DIR__ . '/partials/footer.php' ?>
+<?php include __DIR__ . '/partials/header.php' ?> 
+<div class="container">
+    <div class="columns">
+        <?php foreach($posts as $post): ?>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            <?=$post->title?>
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <?=$post->snippet()?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?php include __DIR__ . '/partials/footer.php' ?> 

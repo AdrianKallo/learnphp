@@ -11,7 +11,7 @@
                     </header>
                     <div class="card-content">
                         <div class="content">
-                            <?=$post->snippet()?>
+                            <?=$post->body?>
                         </div>
                     </div>
                 </div>

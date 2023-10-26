@@ -13,20 +13,23 @@ class Router {
 
     public function match(){
         foreach(self::$routes as $route){
-            if($route['path'] === $this->path && $route['method'] === $this-> method){
+            if($route['path'] === $this->path && $route['method'] === $this->method){
                 return $route;
             }
         }
         return false;
     }
 
-    public static function addRoute(string $method ,string $path, callable|array $action){
-        self::$routes[] = ['method' => $method,'path' => $path, 'action' => $action];
+    public static function addRoute(string $method, string $path, callable|array $action){
+        self::$routes[] = ['method' => $method, 'path' => $path, 'action' => $action];
     }
+
     public static function get(string $path, callable|array $action){
-        self::addRoute('GET', $path, $action);   
+        self::addRoute('GET', $path, $action);
     }
+
     public static function post(string $path, callable|array $action){
-        self::addRoute('POST', $path, $action);   
+        self::addRoute('POST', $path, $action);
     }
+
 }

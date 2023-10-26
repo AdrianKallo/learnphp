@@ -1,27 +1,22 @@
-<?php include __DIR__ . '/../partials/header.php' ?> 
+<?php include __DIR__ . '/partials/header.php' ?>
 <div class="container">
-    <a class="button is-primary" href="/admin/posts/new">Add Post</a>
-    <table class="table is-fullwidth is-striped">
-        <thead>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Actions</th>
-        </thead>
-        <tbody>
-            <?php foreach($posts as $post): ?>
-                <tr>
-                    <td><?=$post->id?></td>
-                    <td><?=$post->title?></td>
-                    <td>
-                        <div class="buttons has-addons">
-                            <a class="button is-info" href="/admin/posts/view?id=<?=$post->id?>">View</a>
-                            <a class="button is-warning" href="/admin/posts/edit?id=<?=$post->id?>">Edit</a>
-                            <a class="button is-danger" href="/admin/posts/delete?id=<?=$post->id?>">Delete</a>
+    <div class="columns">
+        <?php foreach ($posts as $post) : ?>
+            <div class="column is-3">
+                <div class="card mb-3">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            <?= $post->title ?>
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <?= $post->body ?>
                         </div>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </div>
-<?php include __DIR__ . '/../partials/footer.php' ?> 
+<?php include __DIR__ . '/partials/footer.php' ?>

@@ -9,9 +9,11 @@ class PostsController {
         $posts = Post::all();
         view('posts/index', compact('posts'));
     }
+
     public function create(){
         view('posts/create');
     }
+
     public function store(){
         $post = new Post();
         $post->title = $_POST['title'];
@@ -19,6 +21,7 @@ class PostsController {
         $post->save();
         header('Location: /admin/posts');
     }
+
     public function show(){
         $post = Post::find($_GET['id']);
         if($post){
@@ -27,6 +30,7 @@ class PostsController {
             throw new NotFoundException();
         }
     }
+
     public function edit(){
         $post = Post::find($_GET['id']);
         if($post){

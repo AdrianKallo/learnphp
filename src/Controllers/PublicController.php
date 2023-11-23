@@ -7,9 +7,9 @@ use App\Models\User;
 
 class PublicController {
     public function index(){
+        
         $posts = Post::all();
         view('index', compact('posts'));
-        //view('index', ['name'=>$name]);
     }
 
     public function about(){
@@ -17,15 +17,14 @@ class PublicController {
     }
 
     public function form(){
-        view('form');
-    }
-
-    public function answer(){
         var_dump($_GET);
         var_dump($_POST);
-        //var_dump($_REQUEST); NOT USED!!!
+        //var_dump($_SERVER);
+        view('form');
     }
-    public function getAnswer(){
-        echo "get request";
+    public function formPost(){
+        var_dump($_GET);
+        var_dump($_POST);
+       
     }
 }

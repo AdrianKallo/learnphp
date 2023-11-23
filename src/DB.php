@@ -2,12 +2,11 @@
 
 namespace App;
 
-use App\Models\Post;
 use PDO;
 use PDOException;
-use stdClass;
 
-class DB {
+class DB
+{
     private $conn;
 
     public function __construct()
@@ -16,40 +15,42 @@ class DB {
             $this->conn = new PDO("sqlite:db.sqlite");
             // set the PDO error mode to exception
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
     }
 
-    public function all(string $table, string $className){
+    public function all(string $table, string $className)
+    {
         $stmt = $this->conn->prepare("SELECT * FROM $table");
         $stmt->execute();
-      
+
         // set the resulting array to associative
         $stmt->setFetchMode(PDO::FETCH_CLASS, $className);
         return $stmt->fetchAll();
     }
 
-    public function find(string $table, string $className, $id){
+    public function find(string $table, string $className, $id)
+    {
         $stmt = $this->conn->prepare("SELECT * FROM $table WHERE id=$id");
         $stmt->execute();
-      
+
         // set the resulting array to associative
         $stmt->setFetchMode(PDO::FETCH_CLASS, $className);
         return $stmt->fetch();
     }
-
-    public function where(string $table, string $class,$fieldName, $value){
-        $stmt = $this->conn->prepare("SELECT * FROM $table WHERE $fieldName= '$value'");
+    public function where(string $table, string $className, $fieldName, $value)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM $table WHERE $fieldName='$value'");
         $stmt->execute();
-      
+
         // set the resulting array to associative
-        $stmt->setFetchMode(PDO::FETCH_CLASS, $class);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $className);
         return $stmt->fetchAll();
     }
 
-    public function insert($table, $fields){
+    public function insert($table, $fields)
+    {
         unset($fields['id']);
         $fieldNames = array_keys($fields);
         $fieldNamesText = implode(',', $fieldNames);
@@ -59,12 +60,12 @@ class DB {
         // use exec() because no results are returned
         $this->conn->exec($sql);
     }
-
-    public function update($table, $fields){
+    public function update($table, $fields)
+    {
         $id = $fields['id'];
         unset($fields['id']);
         $updateText = '';
-        foreach($fields as $fieldName=>$fieldValue){
+        foreach ($fields as $fieldName => $fieldValue) {
             $updateText .= "$fieldName='$fieldValue',";
         }
         $updateText = rtrim($updateText, ',');
@@ -78,7 +79,8 @@ class DB {
         $stmt->execute();
     }
 
-    public function delete($table, $id){
+    public function delete($table, $id)
+    {
         $sql = "DELETE FROM $table WHERE id=$id";
 
         // use exec() because no results are returned

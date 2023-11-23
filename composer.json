@@ -1,0 +1,18 @@
+{
+    "name": "adrian.kallo/ta21elearnphp",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adrian Kallo",
+            "email": "adrian.kallo@tptlive.ee"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^6.3"
+    }
+}

@@ -1,22 +1,20 @@
-<?php include __DIR__ . '/../partials/header.php' ?>
-
+<?php include __DIR__ . '/../partials/header.php' ?> 
 <div class="container">
-    <table class="table is-striped is-fullwidth">
+   <table class="table is-striped is-fullwidth">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td><?=$user->id?></td>
             </tr>
             <tr>
-                <th>Paswword</th>
-                <td><?=$user->name?></td>
-            </tr>
-            <tr>
                 <th>Email</th>
                 <td><?=$user->email?></td>
             </tr>
+            <tr>
+                <th>Password</th>
+                <td><?=$user->password?></td>
+            </tr>
         </tbody>
-    </table>
+   </table>
 </div>
-
-<?php include __DIR__ . '/../partials/footer.php' ?>
+<?php include __DIR__ . '/../partials/footer.php' ?> 

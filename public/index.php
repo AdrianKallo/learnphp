@@ -26,7 +26,7 @@ try {
         } else {
             throw new Exception('invalid router action');
         }
-
+    
     } else {
         throw new NotFoundException();
     }

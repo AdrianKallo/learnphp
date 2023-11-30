@@ -16,23 +16,23 @@ class UsersController
             throw new NotFoundException();
         }
     }
+    function store()
+    {
+        $user = new User();
+        $user->email = $_POST['email'];
+        $user->password = $_POST['password'];
+        $user->save();
+        header('Location: /admin/users');
+    }
     public function create()
     {
         view('users/create');
-    }
-    public function store()
-    {
-        $users = new User();
-        $users->email = $_POST['email'];
-        $users->password = $_POST['password'];
-        $users->save();
-        header('Location: /admin/users');
     }
     public function show()
     {
         $user = User::find($_GET['id']);
         if ($user) {
-            view('users/show', compact('users'));
+            view('users/show', compact('user'));
         } else {
             throw new NotFoundException();
         }
@@ -41,7 +41,7 @@ class UsersController
     {
         $user = User::find($_GET['id']);
         if ($user) {
-            view('users/edit', compact('users'));
+            view('users/edit', compact('user'));
         } else {
             throw new NotFoundException();
         }
@@ -49,11 +49,10 @@ class UsersController
     public function update()
     {
         $users = User::find($_GET['id']);
-
-        $users->password = $_POST['password'];
         $users->email = $_POST['email'];
+        $users->password = $_POST['password'];
         $users->save();
-
+        header('Location: /admin/users');
     }
     public function destroy()
     {

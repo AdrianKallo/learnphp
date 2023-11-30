@@ -6,8 +6,8 @@ class Router {
     static $routes = [];
     public function __construct(string $path, string $method)
     {
-      $this->path = parse_url($path, PHP_URL_PATH);
-      $this->method = $method;
+      $this->path = parse_url($path, PHP_URL_PATH);  
+      $this->method = $method;   
     }
 
     public function match () {

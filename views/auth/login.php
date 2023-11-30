@@ -2,13 +2,13 @@
 <div class="container">
     <form action="/login" method="POST">
         <div class="field">
-            <label class="label" for="Email">Email</label>
+            <label class="label" for="email">Email</label>
             <div class="control">
                 <input 
-                class="input" 
-                type="text"
-                placeholder="Email" 
-                id="email" 
+                class="input"
+                type="email"
+                placeholder="Email"
+                id="email"
                 name="email"
                 autocomplete="email">
             </div>
@@ -17,9 +17,9 @@
             <label class="label" for="password">Password</label>
             <div class="control">
                 <input 
-                class="input" 
-                type="password" 
-                id="password" 
+                class="input"
+                type="password"
+                id="password"
                 name="password">
             </div>
         </div>

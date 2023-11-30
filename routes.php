@@ -2,10 +2,9 @@
 
 use App\Controllers\AuthController;
 use App\Controllers\PostsController;
-use App\Router;
 use App\Controllers\PublicController;
 use App\Controllers\UsersController;
-
+use App\Router;
 
 Router::get('/', [PublicController::class, 'index']);
 
@@ -15,13 +14,6 @@ Router::get('/form', [PublicController::class, 'form']);
 
 Router::post('/form', [PublicController::class, 'formPost']);
 
-Router::get('/', [UsersController::class, 'index']);
-
-Router::get('/about', [UsersController::class, 'about']);
-
-Router::get('/form', [UsersController::class, 'form']);
-
-Router::post('/form', [UsersController::class, 'formUser']);
 
 
 Router::get('/admin/posts', [PostsController::class, 'index']);
@@ -39,6 +31,8 @@ Router::get('/admin/users/show', [UsersController::class, 'show']);
 Router::get('/admin/users/edit', [UsersController::class, 'edit']);
 Router::post('/admin/users/edit', [UsersController::class, 'update']);
 Router::get('/admin/users/delete', [UsersController::class, 'destroy']);
+
+
 
 Router::get('/register', [AuthController::class, 'registerForm']);
 Router::post('/register', [AuthController::class, 'register']);
